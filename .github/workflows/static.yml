@@ -1,0 +1,416 @@
+# Simple workflow for deploying static content to GitHub Pages
+name: Deploy static content to Pages
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Single deploy job since we're just deploying
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Upload entire repository
+          <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Arquivo Perdido</title>
+
+<style>
+body {
+    margin: 0;
+    background: black;
+    color: #00ff66;
+    font-family: "Courier New", monospace;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+body::before {
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+    repeating-linear-gradient(
+    0deg,
+    rgba(255,255,255,0.03) 0px,
+    rgba(255,255,255,0.03) 1px,
+    transparent 2px,
+    transparent 4px);
+    pointer-events:none;
+}
+
+.container {
+    text-align:center;
+    border:1px solid #00ff66;
+    padding:30px;
+    width:90%;
+    max-width:500px;
+    box-shadow:0 0 25px #00ff66;
+}
+
+h1 {
+    color:red;
+    text-shadow:0 0 15px red;
+}
+
+input {
+    background:black;
+    color:white;
+    border:1px solid #00ff66;
+    padding:12px;
+    width:80%;
+    font-size:18px;
+}
+
+button {
+    margin-top:15px;
+    padding:12px 30px;
+    background:black;
+    color:#00ff66;
+    border:1px solid #00ff66;
+    cursor:pointer;
+}
+
+button:hover {
+    background:#00ff66;
+    color:black;
+}
+
+#video {
+    display:none;
+    margin-top:20px;
+}
+
+video {
+    width:100%;
+    border:2px solid red;
+}
+
+#msg {
+    margin-top:15px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>⚠ ARQUIVO RESTRITO ⚠</h1>
+
+<p>Digite a senha para acessar o arquivo:</p>
+
+<input id="senha" type="password" placeholder="Senha">
+
+<br>
+
+<button onclick="verificar()">ACESSAR</button>
+
+<p id="msg"></p>
+
+
+<div id="video">
+
+<h2>Arquivo encontrado...</h2>
+
+<video controls>
+<source src="4012.mp4" type="video/mp4">
+Seu navegador não suporta vídeo.
+</video>
+
+</div>
+
+</div>
+
+
+<script>
+
+const senhaCorreta = "cedar2000";
+
+let bloqueado = false;
+
+
+function verificar(){
+
+    if(bloqueado){
+        return;
+    }
+
+
+    let senha =
+    document.getElementById("senha").value;
+
+
+    let msg =
+    document.getElementById("msg");
+
+
+    if(senha === senhaCorreta){
+
+        msg.style.color="#00ff66";
+        msg.innerHTML=
+        "ACESSO CONCEDIDO... Arquivo desbloqueado.";
+
+        document.getElementById("video").style.display="block";
+
+    }
+
+    else{
+
+        msg.style.color="red";
+        msg.innerHTML=
+        "SENHA INCORRETA. Nova tentativa em 30 segundos.";
+
+        bloqueado=true;
+
+        let tempo=30;
+
+        let contador=setInterval(()=>{
+
+            tempo--;
+
+            msg.innerHTML=
+            "TENTATIVA BLOQUEADA: "+tempo+"s";
+
+            if(tempo<=0){
+
+                clearInterval(contador);
+                bloqueado=false;
+
+                msg.innerHTML=
+                "Sistema liberado. Nova tentativa.";
+
+            }
+
+        },1000);
+
+    }
+
+}
+
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Arquivo Perdido</title>
+
+<style>
+body {
+    margin: 0;
+    background: black;
+    color: #00ff66;
+    font-family: "Courier New", monospace;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+body::before {
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+    repeating-linear-gradient(
+    0deg,
+    rgba(255,255,255,0.03) 0px,
+    rgba(255,255,255,0.03) 1px,
+    transparent 2px,
+    transparent 4px);
+    pointer-events:none;
+}
+
+.container {
+    text-align:center;
+    border:1px solid #00ff66;
+    padding:30px;
+    width:90%;
+    max-width:500px;
+    box-shadow:0 0 25px #00ff66;
+}
+
+h1 {
+    color:red;
+    text-shadow:0 0 15px red;
+}
+
+input {
+    background:black;
+    color:white;
+    border:1px solid #00ff66;
+    padding:12px;
+    width:80%;
+    font-size:18px;
+}
+
+button {
+    margin-top:15px;
+    padding:12px 30px;
+    background:black;
+    color:#00ff66;
+    border:1px solid #00ff66;
+    cursor:pointer;
+}
+
+button:hover {
+    background:#00ff66;
+    color:black;
+}
+
+#video {
+    display:none;
+    margin-top:20px;
+}
+
+video {
+    width:100%;
+    border:2px solid red;
+}
+
+#msg {
+    margin-top:15px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>⚠ ARQUIVO RESTRITO ⚠</h1>
+
+<p>Digite a senha para acessar o arquivo:</p>
+
+<input id="senha" type="password" placeholder="Senha">
+
+<br>
+
+<button onclick="verificar()">ACESSAR</button>
+
+<p id="msg"></p>
+
+
+<div id="video">
+
+<h2>Arquivo encontrado...</h2>
+
+<video controls>
+<source src="4012.mp4" type="video/mp4">
+Seu navegador não suporta vídeo.
+</video>
+
+</div>
+
+</div>
+
+
+<script>
+
+const senhaCorreta = "cedar2000";
+
+let bloqueado = false;
+
+
+function verificar(){
+
+    if(bloqueado){
+        return;
+    }
+
+
+    let senha =
+    document.getElementById("senha").value;
+
+
+    let msg =
+    document.getElementById("msg");
+
+
+    if(senha === senhaCorreta){
+
+        msg.style.color="#00ff66";
+        msg.innerHTML=
+        "ACESSO CONCEDIDO... Arquivo desbloqueado.";
+
+        document.getElementById("video").style.display="block";
+
+    }
+
+    else{
+
+        msg.style.color="red";
+        msg.innerHTML=
+        "SENHA INCORRETA. Nova tentativa em 30 segundos.";
+
+        bloqueado=true;
+
+        let tempo=30;
+
+        let contador=setInterval(()=>{
+
+            tempo--;
+
+            msg.innerHTML=
+            "TENTATIVA BLOQUEADA: "+tempo+"s";
+
+            if(tempo<=0){
+
+                clearInterval(contador);
+                bloqueado=false;
+
+                msg.innerHTML=
+                "Sistema liberado. Nova tentativa.";
+
+            }
+
+        },1000);
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
