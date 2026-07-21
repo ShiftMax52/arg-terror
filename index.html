@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Arquivo Perdido</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #000;
+    color: #00ff66;
+    font-family: "Courier New", monospace;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    padding: 25px;
+    border: 2px solid #00ff66;
+    box-shadow: 0 0 20px #00ff66;
+}
+
+h1 {
+    color: red;
+    text-shadow: 0 0 15px red;
+}
+
+input {
+    width: 90%;
+    padding: 15px;
+    margin-top: 15px;
+    background: black;
+    color: white;
+    border: 1px solid #00ff66;
+    font-size: 18px;
+}
+
+button {
+    margin-top: 15px;
+    padding: 12px 35px;
+    background: black;
+    color: #00ff66;
+    border: 1px solid #00ff66;
+    font-size: 16px;
+}
+
+#mensagem {
+    margin-top: 15px;
+}
+
+#arquivo {
+    display: none;
+    margin-top: 25px;
+}
+
+iframe {
+    width: 100%;
+    height: 250px;
+    border: 2px solid red;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>⚠ ARQUIVO RESTRITO ⚠</h1>
+
+<p>Digite a senha para acessar:</p>
+
+<input id="senha" type="password" placeholder="Senha">
+
+<br>
+
+<button onclick="abrirArquivo()">ACESSAR</button>
+
+<p id="mensagem"></p>
+
+
+<div id="arquivo">
+
+<h2>Arquivo encontrado...</h2>
+
+<iframe 
+src="https://www.youtube.com/embed/5WAypL0ITCc"
+allowfullscreen>
+</iframe>
+
+</div>
+
+
+</div>
+
+
+<script>
+
+let tentativasBloqueadas = false;
+
+function abrirArquivo(){
+
+    if(tentativasBloqueadas){
+        return;
+    }
+
+    let senha =
+    document.getElementById("senha").value;
+
+    let mensagem =
+    document.getElementById("mensagem");
+
+
+    if(senha === "cedar2000"){
+
+        mensagem.style.color = "#00ff66";
+        mensagem.innerHTML =
+        "ACESSO CONCEDIDO.";
+
+        document.getElementById("arquivo").style.display = "block";
+
+    } else {
+
+        tentativasBloqueadas = true;
+
+        let tempo = 30;
+
+        mensagem.style.color = "red";
+
+        let contador = setInterval(function(){
+
+            mensagem.innerHTML =
+            "SISTEMA BLOQUEADO: " + tempo + " segundos";
+
+            tempo--;
+
+            if(tempo < 0){
+
+                clearInterval(contador);
+
+                tentativasBloqueadas = false;
+
+                mensagem.innerHTML =
+                "Nova tentativa liberada.";
+
+            }
+
+        },1000);
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
